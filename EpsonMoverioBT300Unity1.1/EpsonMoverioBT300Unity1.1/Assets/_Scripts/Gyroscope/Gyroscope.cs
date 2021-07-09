@@ -14,64 +14,53 @@
 # Copyright 2017 Seiko Epson Corporation. All rights reserved.            		          #
 #                                                                                         #
 #########################################################################################*/
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Gyroscope : MonoBehaviour 
+public class Gyroscope : MonoBehaviour
 {
+    // Use this for initialization
+    [SerializeField]
+    Text TitleText;
 
-	#region DecraledVariables
-	// Use this for initialization
-	[SerializeField]
-	Text TitleText;
+    [SerializeField]
+    Toggle tglBtn;
 
-	[SerializeField]
-	Toggle tglBtn;
+    [SerializeField]
+    GameObject camera;
 
-	[SerializeField]
-	GameObject camera;
+    [SerializeField]
+    GameObject earthObj;
 
-	[SerializeField]
-	GameObject earthObj;
-
-	[SerializeField]
-	float speed;
+    [SerializeField]
+    float speed;
 
 
-	private int TYPE_CONTROLLER_GYROSCOPE = 3;
+    private int TYPE_CONTROLLER_GYROSCOPE = 3;
 
-	#endregion
+    void Update()
+    {
+        if (!MoverioController.Instance.MoverioDevice) return;
 
-	void Update () 
-	{
-		if (MoverioController.Instance.MoverioDevice == true)
-		{
-			
-	
+        //switching between head tracking and controller tracking
+        if (tglBtn.isOn)
+        {
+            camera.GetComponent<HeadTrackingAR>().enabled = false;  //Disabling the headset gyroscope.
+            TitleText.text = "GYRO Controller : " + Mathf.Round(MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_GYROSCOPE)[0]).ToString() + ", " +
+                             ", " + Mathf.Round(MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_GYROSCOPE)[1]).ToString() + ", " +
+                             ", " + Mathf.Round(MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_GYROSCOPE)[2]).ToString();
 
-		if   (tglBtn.isOn == true) //switching between head tracking and controller tracking
-		{                     
-			
-			camera.GetComponent<HeadTrackingAR>().enabled = false;  //Disabling the headset gyroscope.
-				TitleText.text = "GYRO Controller : " + Mathf.Round (MoverioController.Instance.GetSensorData (TYPE_CONTROLLER_GYROSCOPE) [0]).ToString () + ", " +
-			", " + Mathf.Round (MoverioController.Instance.GetSensorData (TYPE_CONTROLLER_GYROSCOPE) [1]).ToString () + ", " +
-			", " + Mathf.Round (MoverioController.Instance.GetSensorData (TYPE_CONTROLLER_GYROSCOPE) [2]).ToString ();
+            camera.transform.Rotate(-MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_GYROSCOPE)[0] * 5f, -MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_GYROSCOPE)[1] * 5f, 0); //enabling the Controller gyroscope.
+        }
+        else
+        {
+            camera.GetComponent<HeadTrackingAR>().enabled = true; //Enabling the headset gyroscope.
+        }
+    }
 
-			camera.transform.Rotate (-MoverioController.Instance.GetSensorData (TYPE_CONTROLLER_GYROSCOPE) [0] * 5f, -MoverioController.Instance.GetSensorData (TYPE_CONTROLLER_GYROSCOPE) [1] * 5f, 0); //enabling the Controller gyroscope.
-
-		}
-		else 
-		{
-			camera.GetComponent<HeadTrackingAR> ().enabled = true; //Enabling the headset gyroscope.
-		}
-
-		}
-	}
-
-	void FixedUpdate()
-	{
-		earthObj.transform.Rotate (new Vector3 (0,30,0) * Time.deltaTime *speed);//a linear rotation for the earth on it's own axis
-	}
+    void FixedUpdate()
+    {
+        earthObj.transform.Rotate(new Vector3(0, 30, 0) * Time.deltaTime * speed);//a linear rotation for the earth on it's own axis
+    }
 }

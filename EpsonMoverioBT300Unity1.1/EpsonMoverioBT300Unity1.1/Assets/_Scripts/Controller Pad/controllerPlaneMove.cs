@@ -14,49 +14,36 @@
 #                                                                                      		#
 ###########################################################################################*/
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
-public class controllerPlaneMove : MonoBehaviour 
-
+public class controllerPlaneMove : MonoBehaviour
 {
-	private float x=0f , y=0f;
+    private float x = 0f, y = 0f;
 
+    void Update()
+    {
+        MovePlane();
+    }
 
-	void Update() 
-	{
-		
-		MovePlane ();
-	}
+    void MovePlane()  //Movement of the plane according to the controller input
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            y++;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            y--;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            x--;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            x++;
+        }
 
-
-
-	void MovePlane()  //Movement of the plane according to the controller input
-	{
-		
-		if (Input.GetKey (KeyCode.UpArrow)) 
-		{
-			y++;
-		}
-		else if (Input.GetKey (KeyCode.DownArrow)) 
-		{
-			y--;
-		}
-		else if (Input.GetKey (KeyCode.LeftArrow)) 
-		{
-			x--;
-		}
-		else if (Input.GetKey (KeyCode.RightArrow)) 
-		{
-			x++;
-		}
-
-		transform.position = new Vector3 (x, y, transform.position.z);
-	}
-
-
+        transform.position = new Vector3(x, y, transform.position.z);
+    }
 }
-

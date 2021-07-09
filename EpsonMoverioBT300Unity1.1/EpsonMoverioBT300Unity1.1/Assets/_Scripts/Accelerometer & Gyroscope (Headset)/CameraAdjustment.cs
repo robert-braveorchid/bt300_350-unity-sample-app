@@ -14,46 +14,36 @@
 #                                                                                      #
 ######################################################################################*/
 using UnityEngine;
-using System.Collections;
 
-public class CameraAdjustment: MonoBehaviour
+public class CameraAdjustment : MonoBehaviour
 {
+    public string TargetObject;
 
-	#region DecraledVariables
-	public string TargetObject;
+    [SerializeField]
+    float height;
 
-	[SerializeField]
-	float height;
-
-	private Vector3 _camPos;
-	private RaycastHit _rayHit;
-
-	#endregion
+    private Vector3 _camPos;
+    private RaycastHit _rayHit;
 
     void Start()
     {
-		Input.gyro.enabled = true;      //Enabling the headset gyroscope.
-    
+        Input.gyro.enabled = true;      //Enabling the headset gyroscope.
     }
 
     void LateUpdate()
     {
-         transform.Rotate(0, -Input.gyro.rotationRateUnbiased.y, 0);  //Rotation of camera with respect to gyroscope.
-       
+        transform.Rotate(0, -Input.gyro.rotationRateUnbiased.y, 0);  //Rotation of camera with respect to gyroscope.
+
         _camPos = transform.position;
-
     }
-	public bool rayAlgo()     //using raycasting for detection of the object in front of the eyesight of MoverioCameracontroller.
-    {
-		
-        Vector3 dir = transform.forward;
-		if (Physics.Raycast (_camPos, dir,out _rayHit, height))
-		{
-			TargetObject = _rayHit.transform.tag;
-			return true;
-		}
-        else 
 
-			return false;
+    public bool rayAlgo()     //using raycasting for detection of the object in front of the eyesight of MoverioCameracontroller.
+    {
+        Vector3 dir = transform.forward;
+
+        if (!Physics.Raycast(_camPos, dir, out _rayHit, height)) return false;
+
+        TargetObject = _rayHit.transform.tag;
+        return true;
     }
 }

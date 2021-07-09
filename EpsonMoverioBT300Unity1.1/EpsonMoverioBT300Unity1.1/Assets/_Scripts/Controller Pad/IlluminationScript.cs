@@ -13,28 +13,23 @@
 # Copyright 2017 Seiko Epson Corporation. All rights reserved.                         		  #
 #                                                                                      		  #
 #############################################################################################*/
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IlluminationScript : MonoBehaviour 
+public class IlluminationScript : MonoBehaviour
 {
+    // Use this for initialization
+    [SerializeField]
+    int BrightnessValues;
 
-	// Use this for initialization
-	[SerializeField]
-	int BrightnessValues;
+    [SerializeField]
+    Slider brightAdjust;
 
-	[SerializeField]
-	Slider brightAdjust; 
-		
-	void Update () 
-	{
-		//Adjusting the intensity of the screen using brightnessvalues.
-		BrightnessValues = (int)brightAdjust.value;
-		MoverioController.Instance.SetDisplayBrightness(BrightnessValues); //Setting the brightness value.
-	}
-
-
-
+    void Update()
+    {
+        //Adjusting the intensity of the screen using brightnessvalues.
+        BrightnessValues = (int)brightAdjust.value;
+        MoverioController.Instance.SetDisplayBrightness(BrightnessValues); //Setting the brightness value.
+    }
 }
