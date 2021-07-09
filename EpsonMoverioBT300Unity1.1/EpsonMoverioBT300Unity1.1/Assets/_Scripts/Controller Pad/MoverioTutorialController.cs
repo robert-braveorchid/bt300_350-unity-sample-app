@@ -22,12 +22,12 @@ public class MoverioTutorialController : MonoBehaviour {
 
 	//text views to display the sensor data. 
 
-	public GUIText TextView;
-	public GUIText TextView2;
-	public GUIText TextView3;
-	public GUIText TextView4;
-	public GUIText TextView5;
-	public GUIText TextView6;
+	public Text TextView;
+	public Text TextView2;
+	public Text TextView3;
+	public Text TextView4;
+	public Text TextView5;
+	public Text TextView6;
 	public Text tv;
 
 
