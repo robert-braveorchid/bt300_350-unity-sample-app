@@ -14,26 +14,23 @@
 #                                                                                      		#
 ###########################################################################################*/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RotationalVector : MonoBehaviour 
+public class RotationalVector : MonoBehaviour
 {
+    // Use this for initialization
+    private int TYPE_CONTROLLER_ROTATION_VECTOR = 4;
+    private float x, y, z;
 
-	// Use this for initialization
-	private int TYPE_CONTROLLER_ROTATION_VECTOR=4;
-	private float x, y, z;
+    void Update()
+    {
+        //Taking the input from controller and rotating the cube along with the movement of the controller.
+        if (!MoverioController.Instance.MoverioDevice) return;
 
-	void Update () 
-	{
-		if (MoverioController.Instance.MoverioDevice == true) //Taking the input from controller and rotating the cube along with the movement of the controller.
-		{
-			//mapping controller rotation to the cube
-			x = MoverioController.Instance.GetSensorData (TYPE_CONTROLLER_ROTATION_VECTOR) [1] * 180f;
-			y = MoverioController.Instance.GetSensorData (TYPE_CONTROLLER_ROTATION_VECTOR) [2] * 180f;
-			z = -MoverioController.Instance.GetSensorData (TYPE_CONTROLLER_ROTATION_VECTOR) [0] * 180f;
-			transform.rotation = Quaternion.Euler (x, y, z);
-		}
-	}
+        //mapping controller rotation to the cube
+        x = MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_ROTATION_VECTOR)[1] * 180f;
+        y = MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_ROTATION_VECTOR)[2] * 180f;
+        z = -MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_ROTATION_VECTOR)[0] * 180f;
+        transform.rotation = Quaternion.Euler(x, y, z);
+    }
 }

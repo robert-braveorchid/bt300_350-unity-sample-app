@@ -14,19 +14,12 @@
 #                                                                                       #
 #######################################################################################*/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
 
 public class HeadsetTap : MonoBehaviour 
 {
-
-	// Use this for initialization
-
-	private Scene _sceneName;
+    private Scene _sceneName;
 	private bool _changeCounter;
 	private int _index;
 
@@ -34,7 +27,7 @@ public class HeadsetTap : MonoBehaviour
 	{
 		_sceneName = SceneManager.GetActiveScene ();    
 		_changeCounter = false;
-		_index = 0;		
+		_index = 0;
 	}
 	
 	// Update is called once per frame
@@ -43,20 +36,16 @@ public class HeadsetTap : MonoBehaviour
 	{   //detection of headset tap and navigation of the scene in ascending order
 		_changeCounter = MoverioController.Instance.GetHeadsetTap ();
 		_index = _sceneName.buildIndex;
-		while(MoverioController.Instance.GetHeadsetTap () != false)  //Detecting headset tap count.
-		{
 
-			if (_changeCounter == true)  
-			{
-			
-				_changeCounter = false;
-				if (_sceneName.buildIndex != SceneManager.sceneCountInBuildSettings || _sceneName.buildIndex != 0) 
-				{
-					_index++;
-					SceneManager.LoadScene (_index); //Navigating to different Scene
-				}
-					
-			}
-		}
+		while(MoverioController.Instance.GetHeadsetTap())  //Detecting headset tap count.
+        {
+            if (!_changeCounter) continue;
+            _changeCounter = false;
+
+            if (_sceneName.buildIndex == SceneManager.sceneCountInBuildSettings && _sceneName.buildIndex == 0) continue;
+
+            _index++;
+            SceneManager.LoadScene (_index); //Navigating to different Scene
+        }
 	}
 }

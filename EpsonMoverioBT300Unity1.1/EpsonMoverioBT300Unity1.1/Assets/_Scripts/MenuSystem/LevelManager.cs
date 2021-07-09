@@ -15,24 +15,20 @@
 ###########################################################################################*/
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
-
 
 public class LevelManager : MonoBehaviour
 {
 
-	public void LoadLevel(string name) //Public Method to change the scene with respect to scene name.
-	{
-		//Debug.Log ("New Level load: " + name);
-		SceneManager.LoadScene (name);
+    public void LoadLevel(string name) //Public Method to change the scene with respect to scene name.
+    {
+        //Debug.Log ("New Level load: " + name);
+        SceneManager.LoadScene(name);
+    }
 
-	}
-
-	public void QuitRequest() //Public method to quit the application.
-	{
-		//Debug.Log ("Quit requested");
-		Application.Quit ();
-	}
-
+    public void QuitRequest() //Public method to quit the application.
+    {
+        //Debug.Log ("Quit requested");
+        Application.Quit();
+    }
 }
