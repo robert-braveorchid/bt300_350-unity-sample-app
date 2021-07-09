@@ -38,7 +38,6 @@ public class controllerTargetmove : MonoBehaviour   //Class name : controllerTar
     {
         newPosition = transform.position;  // Storing the current position. 
         _move = false;                    // Movement is set to false at current.
-
     }
 
     void Update()
@@ -74,6 +73,7 @@ public class controllerTargetmove : MonoBehaviour   //Class name : controllerTar
             !Input.GetKeyDown(KeyCode.Space)) return;
 
         _colorCount++;//Applying Random colour's material.
+
         if (_colorCount % 3 == 0)
         {
             newCol = Color.red;

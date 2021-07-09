@@ -16,10 +16,8 @@ public enum MoverioEventType
     Display3DOn,
     Display3DOff,
     DisplayBrightnessChange,
-
     MuteDisplayOn,
-    MuteDisplayOff,
-
+    MuteDisplayOff
 }
 
 //Set Parameters to remember if the display
@@ -31,21 +29,16 @@ public enum MoverioDisplayType
     Display2D
 }
 
-
 [AddComponentMenu("Moverio/MoverioController")]
-
 public class MoverioController : MonoBehaviour
 {
-
     public delegate void MoverioEvent(MoverioEventType type);
     public static event MoverioEvent OnMoverioStateChange;
 
     //Define default parameters for the Moverio. 
 
     public int InitialScreenBrightness = 20;
-
     public MoverioDisplayType InitialDisplayMode = MoverioDisplayType.Display2D;
-
 
     private AndroidJavaClass _unityPlayer;
     private AndroidJavaObject _currentActivity;
@@ -75,13 +68,9 @@ public class MoverioController : MonoBehaviour
 
     void Start()
     {
-
         CheckDeviceType();
-
         SetJavaClass();
-
         SetDefaultSettings();
-
     }
 
     //Function to make sure the device is a Moverio BT-300. 
@@ -89,15 +78,11 @@ public class MoverioController : MonoBehaviour
     {
         if (SystemInfo.deviceModel.Equals("EPSON EMBT3C"))
         {
-
             AndroidJNI.AttachCurrentThread();
-
         }
         else
         {
-
             MoverioDevice = false;
-
         }
     }
 
@@ -197,11 +182,7 @@ public class MoverioController : MonoBehaviour
 		}
 
 #endif
-
-        if (OnMoverioStateChange != null)
-        {
-            OnMoverioStateChange(MoverioEventType.DisplayBrightnessChange);
-        }
+        OnMoverioStateChange?.Invoke(MoverioEventType.DisplayBrightnessChange);
 
         return msg;
     }
@@ -223,7 +204,6 @@ public class MoverioController : MonoBehaviour
 		}
 
 #endif
-
         return i;
     }
 

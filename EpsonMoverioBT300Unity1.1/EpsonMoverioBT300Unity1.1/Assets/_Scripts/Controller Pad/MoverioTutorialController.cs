@@ -4,10 +4,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class MoverioTutorialController : MonoBehaviour
 {
-
     //sets various ints to handle the sensor values. 
     public int CUSTOM_SENSOR_COUNT = 6;
 
@@ -29,7 +27,6 @@ public class MoverioTutorialController : MonoBehaviour
     public Text tv;
 
     void Start()
-
     {
         TextView.text = "";
         TextView2.text = "";
@@ -39,18 +36,15 @@ public class MoverioTutorialController : MonoBehaviour
         TextView6.text = "";
 
         //StartCoroutine(TutorialSequence());
-
-
     }
 
     //The following depicts how developers recieve sensor data from the Moverio in Unity. 
 
     void DisplaySensorData()
     {
-
         TextView.text = "HEADSET ACCEL x: " + MoverioController.Instance.GetSensorData(TYPE_HEADSET_ACCELEROMETER)[0].ToString() + ", " +
-            "y: " + MoverioController.Instance.GetSensorData(TYPE_HEADSET_ACCELEROMETER)[1].ToString() + ", " +
-                "z: " + MoverioController.Instance.GetSensorData(TYPE_HEADSET_ACCELEROMETER)[2].ToString();
+                        "y: " + MoverioController.Instance.GetSensorData(TYPE_HEADSET_ACCELEROMETER)[1].ToString() + ", " +
+                        "z: " + MoverioController.Instance.GetSensorData(TYPE_HEADSET_ACCELEROMETER)[2].ToString();
 
         TextView2.text = "CONTROLLER ACCEL x: " + MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_ACCELEROMETER)[0].ToString() + ", " +
             "y: " + MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_ACCELEROMETER)[1].ToString() + ", " +

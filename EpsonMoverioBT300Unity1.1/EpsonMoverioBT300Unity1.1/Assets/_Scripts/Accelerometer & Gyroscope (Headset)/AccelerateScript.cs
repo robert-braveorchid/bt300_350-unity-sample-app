@@ -14,15 +14,10 @@
 #                                                                                                         #
 #########################################################################################################*/
 
-
 using UnityEngine;
-
 
 public class AccelerateScript : MonoBehaviour
 {
-
-    #region DecraledVariables
-
     [SerializeField]
     float speed;
 
@@ -33,10 +28,7 @@ public class AccelerateScript : MonoBehaviour
     private CameraAdjustment _cam;
     private int TYPE_HEADSET_ACCELEROMETER = 0;
     private Vector3 _initial;
-
-    #endregion
-
-
+    
     void Start()
     {
         _initial = transform.position; //Recording initial transformation.

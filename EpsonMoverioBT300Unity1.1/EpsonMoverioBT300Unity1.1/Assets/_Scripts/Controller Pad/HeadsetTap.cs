@@ -19,9 +19,7 @@ using UnityEngine.SceneManagement;
 
 public class HeadsetTap : MonoBehaviour 
 {
-    // Use this for initialization
-
-	private Scene _sceneName;
+    private Scene _sceneName;
 	private bool _changeCounter;
 	private int _index;
 

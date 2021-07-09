@@ -18,7 +18,6 @@ using UnityEngine;
 
 public class RotationalVector : MonoBehaviour
 {
-
     // Use this for initialization
     private int TYPE_CONTROLLER_ROTATION_VECTOR = 4;
     private float x, y, z;

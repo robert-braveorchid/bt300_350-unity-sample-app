@@ -68,7 +68,6 @@ public class Accelerometer : MonoBehaviour
             values.text = "HEADSET ACCEL x: " + Mathf.Round(MoverioController.Instance.GetSensorData(TYPE_HEADSET_ACCELEROMETER)[0]).ToString() + ", " +
                           "y: " + Mathf.Round(MoverioController.Instance.GetSensorData(TYPE_HEADSET_ACCELEROMETER)[1]).ToString() + ", " +
                           "z: " + Mathf.Round(MoverioController.Instance.GetSensorData(TYPE_HEADSET_ACCELEROMETER)[2]).ToString();
-
         }
         else
         {
@@ -76,7 +75,6 @@ public class Accelerometer : MonoBehaviour
             values.text = "CONTROLLER ACCEL x: " + Mathf.Round(MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_ACCELEROMETER)[0]).ToString() + ", " +
                           "y: " + Mathf.Round(MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_ACCELEROMETER)[1]).ToString() + ", " +
                           "z: " + Mathf.Round(MoverioController.Instance.GetSensorData(TYPE_CONTROLLER_ACCELEROMETER)[2]).ToString();
-
         }
 
         _sphereRigidboby.AddForce(_ballMovement * speed * Time.deltaTime);  // Adding Force to the ball with respect to the Accelerometer values and Speed.
