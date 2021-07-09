@@ -85,14 +85,16 @@ While in a scene described above, the user can tap the headset to change to the 
 
 ## Application Requirements and Installation
 
-Requirements: EPSON Moverio BT-300 or BT-350 Smart Glasses, Unity Editor 5.X or above.
+Requirements: EPSON Moverio BT-300 or BT-350 Smart Glasses, Unity Editor 2019 or above, Visual Studio Code.
 
 How to import the project into Unity Editor:
 
-- Get a Unity License from https://store.unity.com/ and install locally.
 - Clone this repo to your local machine.
+- Get a Unity License from https://store.unity.com/ and install locally.
+- Get a Visual Studio Code
 - Go to File->Open and navigate to the “EpsonMoverioBT300Unity1.1” folder.
 - Click “Open” and the project will be imported into Unity.
+- In Unity->Eit->Preferences...->"External Tools". Select Visual Studio as external script editor and unselect all checkboxes to create aditional projects.
 
 How to install application onto the device:
 
@@ -100,7 +102,6 @@ How to install application onto the device:
 - Locate the .apk using file explorer.
 - Click on file and install it.
 - Run the application.
-
 
 Configuration: The BT-300 runs Android 5.1 or API Level 22.
 
