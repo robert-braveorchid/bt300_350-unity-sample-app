@@ -94,7 +94,7 @@ How to import the project into Unity Editor:
 - Get a Visual Studio Code
 - Go to File->Open and navigate to the “EpsonMoverioBT300Unity1.1” folder.
 - Click “Open” and the project will be imported into Unity.
-- In Unity->Eit->Preferences...->"External Tools". Select Visual Studio as external script editor and unselect all checkboxes to create aditional projects.
+- In Unity->Edit->Preferences...->"External Tools". Select Visual Studio as external script editor and unselect all checkboxes to create aditional projects.
 
 How to install application onto the device:
 
